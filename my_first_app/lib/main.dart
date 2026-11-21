@@ -28,9 +28,9 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: .fromSeed(seedColor: const Color.fromARGB(255, 147, 218, 119)),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'My first app'),
     );
   }
 }
@@ -104,7 +104,8 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: .center,
           children: [
-            const Text('You have pushed the button this many times:'),
+            const Text('Hello , Bissekie '),
+            const Text('Welcome to Flutter Lab 1'),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
