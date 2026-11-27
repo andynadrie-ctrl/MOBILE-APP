@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Overflow Example'),
-          backgroundColor: Colors.blue,
+          title: const Text('Fixed Overflow'),
+          backgroundColor: Colors.green,
         ),
         body: Center(
           child: Row(
@@ -24,12 +24,14 @@ class MyApp extends StatelessWidget {
                 Icons.person,
                 size: 50,
               ),
-              const Text(
-                'This is a very long text that will '
-                'cause a RenderFlex overflow because '
-                'there is not enough horizontal space '
-                'to display all this text inside the Row.',
-                style: TextStyle(fontSize: 20),
+              Expanded(
+                child: Text(
+                  'This is a very long text that previously '
+                  'caused a RenderFlex overflow. Now it fits '
+                  'inside the available horizontal space '
+                  'because we are using Expanded.',
+                  style: const TextStyle(fontSize: 20),
+                ),
               ),
             ],
           ),
