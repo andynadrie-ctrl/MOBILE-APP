@@ -14,56 +14,60 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.purple,
+          seedColor: Colors.blue,
         ),
         useMaterial3: true,
       ),
-      home: const ProfileCard(),
+      home: const HomePage(),
     );
   }
 }
 
-class ProfileCard extends StatelessWidget {
-  const ProfileCard({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  final List<Map<String, dynamic>> items = const [
+    {
+      'name': 'Laptop',
+      'description': 'A computer for work and study',
+      'icon': Icons.laptop,
+    },
+    {
+      'name': 'Smartphone',
+      'description': 'A device for communication',
+      'icon': Icons.phone_android,
+    },
+    {
+      'name': 'Headphones',
+      'description': 'Listen to music and audio',
+      'icon': Icons.headphones,
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Profile'),
+        title: const Text('My Items'),
       ),
-      body: Center(
-        child: Card(
-          margin: const EdgeInsets.all(20),
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const CircleAvatar(
-                  radius: 45,
-                  child: Icon(Icons.person, size: 50),
-                ),
-                const SizedBox(height: 15),
-                const Text(
-                  'Nadrie Koda',
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                const Text('Flutter Developer'),
-                const SizedBox(height: 12),
-                const Text(
-                  'I love learning programming '
-                  'and creating mobile applications.',
-                  textAlign: TextAlign.center,
-                ),
-              ],
+      body: ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return Card(
+            margin: const EdgeInsets.all(10),
+            child: ListTile(
+              leading: Icon(
+                items[index]['icon'],
+                size: 35,
+              ),
+              title: Text(items[index]['name']),
+              subtitle: Text(
+                items[index]['description'],
+              ),
+              trailing: const Icon(Icons.arrow_forward_ios),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
